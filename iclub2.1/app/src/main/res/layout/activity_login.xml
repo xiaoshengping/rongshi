@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/iculd_beijin_icon"
+    tools:context="com.example.administrator.iclub21.util.LoginActivity">
+   <include layout="@layout/login_tailt_layout"
+       ></include>
+    <ImageView
+
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="170dp"
+        android:src="@mipmap/logo"
+        style="@style/paren_layout_width"
+         />
+      <EditText
+          android:id="@+id/edit_phone"
+          android:layout_marginLeft="60dp"
+          android:textColorHint="@color/white"
+          android:phoneNumber="true"
+          android:hint="手机号码"
+          android:drawablePadding="5dp"
+          android:drawableLeft="@mipmap/login_phone_icon"
+          android:layout_width="250dp"
+          android:layout_height="wrap_content" />
+      <EditText
+          android:id="@+id/edit_psw"
+          android:layout_marginLeft="60dp"
+          android:layout_marginTop="10dp"
+          android:textColorHint="@color/white"
+          android:hint="密码"
+          android:password="true"
+          android:drawablePadding="5dp"
+          android:drawableLeft="@mipmap/login_phone_icon"
+          android:layout_width="250dp"
+          android:layout_height="wrap_content" />
+     <Button
+         android:id="@+id/login_button"
+         android:text="登陆"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="60dp"
+         android:layout_width="250dp"
+         android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+      style="@style/paren_layout_match_horgrivity"
+        >
+        <TextView
+            android:text="注册"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginLeft="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="忘记密码？"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:layout_marginLeft="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>
