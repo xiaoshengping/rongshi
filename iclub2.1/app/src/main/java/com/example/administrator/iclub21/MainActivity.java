@@ -14,7 +14,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         inti();
-
+     //TextView textView;
     }
     public  void inti(){
         Intent intent=new Intent(this, HomeActivity.class);
