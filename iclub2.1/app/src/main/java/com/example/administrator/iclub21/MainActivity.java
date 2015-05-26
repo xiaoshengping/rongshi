@@ -15,6 +15,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         inti();
      //TextView textView;
+        //ViewPager
+
     }
     public  void inti(){
         Intent intent=new Intent(this, HomeActivity.class);
