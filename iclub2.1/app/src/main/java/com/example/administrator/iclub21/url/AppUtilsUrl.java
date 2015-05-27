@@ -21,6 +21,22 @@ public class AppUtilsUrl  {
         return BaseUrl+"getPersonResume.action?offset=0&limit=10";
 
     }
+    public static String getLoginData(String uid,String pwd){
+
+        return BaseUrl+"login_V2.action?"+"uid="+uid+"&pwd="+pwd;
+
+    }
+
+    public static String getRegisterData(String uid,String pwd,String vcode){
+        //SignUp_V2.action? uid=13800138000&pwd=abc123&vcode=888888
+        return BaseUrl+"SignUp_V2.action?"+"uid="+uid+"&pwd="+pwd+"&vcode="+vcode;
+
+    }
+    public static String getVcodeData(String phone){
+        //sendVcode.action? phone=13800138000
+        return BaseUrl+"sendVcode.action?"+"phone="+phone;
+
+    }
 
     public static String getRecruitmentImage(){
         return ImageBaseUrl+"getJobTopPicture.action";
