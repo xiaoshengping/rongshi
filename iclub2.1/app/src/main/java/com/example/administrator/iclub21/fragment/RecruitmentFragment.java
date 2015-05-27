@@ -85,14 +85,14 @@ public class RecruitmentFragment extends Fragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
 
-//                LinearLayout recruiment_list_title_ad = (LinearLayout)view.findViewById(R.id.recruiment_list_title);
+                LinearLayout recruiment_list_title_ad = (LinearLayout)view.findViewById(R.id.recruiment_list_title);
 //
-                if (firstVisibleItem >=2 ) {
+                if (firstVisibleItem >=1 ) {
 //
 //                    recruiment_list_title_ad.setVisibility(View.GONE);
 //                } else if(firstVisibleItem ==1 ) {
                     recruiment_list_title.setVisibility(View.VISIBLE);
-//                    recruiment_list_title_ad.setVisibility(View.INVISIBLE);
+                    recruiment_list_title_ad.setVisibility(View.GONE);
 //                }else if(firstVisibleItem ==1){
 //                    recruiment_list_title.setVisibility(View.INVISIBLE);
 //                    recruiment_list_title_ad.setVisibility(View.VISIBLE);
