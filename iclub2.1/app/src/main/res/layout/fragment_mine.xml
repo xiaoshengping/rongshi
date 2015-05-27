@@ -11,9 +11,8 @@ android:orientation="vertical"
 
 
       <RelativeLayout
-
           android:layout_width="match_parent"
-          android:layout_height="200dp">
+          android:layout_height="180dp">
         <ImageView
             android:src="@mipmap/mine_head_icon"
             android:layout_width="110dp"
@@ -41,6 +40,8 @@ android:orientation="vertical"
       </RelativeLayout>
 
     <LinearLayout
+        android:layout_marginTop="5dp"
+        android:background="#fffff0"
         android:layout_width="match_parent"
         android:gravity="center"
         android:orientation="horizontal"
@@ -60,10 +61,15 @@ android:orientation="vertical"
             android:padding="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+          <!-- <TextView
+             android:background="@mipmap/wilt_icon"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />-->
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="5dp"
+        android:background="#fffff0"
         android:layout_width="match_parent"
         android:gravity="center"
         android:orientation="horizontal"
@@ -88,6 +94,8 @@ android:orientation="vertical"
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="5dp"
+        android:background="#fffff0"
         android:layout_width="match_parent"
         android:gravity="center"
         android:orientation="horizontal"
@@ -111,6 +119,8 @@ android:orientation="vertical"
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="5dp"
+        android:background="#fffff0"
         android:layout_width="match_parent"
         android:gravity="center"
         android:orientation="horizontal"
@@ -134,9 +144,11 @@ android:orientation="vertical"
 
     </LinearLayout>
     <LinearLayout
+
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:background="#a0000000"
+        android:background="#fffff0"
         android:orientation="horizontal"
         android:layout_height="50dp">
 
@@ -157,6 +169,36 @@ android:orientation="vertical"
 
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/login_cancel"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:background="#fffff0"
+        android:orientation="horizontal"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/role_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="#b0c5ec"
+
+            android:text="注销账号"
+            android:layout_marginLeft="20dp"
+            android:textSize="@dimen/textSize15"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
 
     </LinearLayout>
 
