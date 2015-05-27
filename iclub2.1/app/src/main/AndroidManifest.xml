@@ -27,6 +27,7 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity android:name=".util.SelectedCityActivity"></activity>
+        <activity android:name=".util.RegisterActivity"></activity>
     </application>
 
 </manifest>
