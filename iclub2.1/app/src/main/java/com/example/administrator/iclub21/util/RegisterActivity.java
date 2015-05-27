@@ -76,7 +76,8 @@ public class RegisterActivity extends ActionBarActivity implements View.OnClickL
         switch (v.getId()){
             case R.id.register_reten_tv:
                 Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
-                intent.putExtra("state","");
+                intent.putExtra("uid", "");
+                intent.putExtra("psw", "");
                 //设置返回数据
                 RegisterActivity.this.setResult(RESULT_OK, intent);
                 RegisterActivity.this.finish();

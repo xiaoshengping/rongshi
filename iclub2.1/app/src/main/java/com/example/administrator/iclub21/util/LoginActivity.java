@@ -82,10 +82,12 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             case R.id.login_button:
                  String uid=  phoneEdit.getText().toString();
                  String  psw=MD5Uutils.MD5(pswEdit.getText().toString());
+                if(uid!=null&&psw!=null){
                 try {
                     intiLoginData(uid,psw);
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
+                }
                 }
                 break;
             case R.id.register_tv:
