@@ -50,5 +50,11 @@
         <item name="android:padding">2dp</item>
     </style>
 
+        <style name="starRatingBar" parent="@android:style/Widget.RatingBar">
+            <item name="android:progressDrawable">@drawable/star_rating_bar</item>
+<!--            <item name="android:minHeight">34dp</item>
+            <item name="android:maxHeight">34px</item>-->
+        </style>
+
 
 </resources>
