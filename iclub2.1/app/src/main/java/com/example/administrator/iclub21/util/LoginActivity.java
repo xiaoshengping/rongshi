@@ -33,7 +33,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends ActionBarActivity implements View.OnClickListener {
     @ViewInject(R.id.edit_phone)
-      private EditText phoneEdit;
+    private EditText phoneEdit;
     @ViewInject(R.id.edit_psw)
     private EditText pswEdit;
     @ViewInject(R.id.login_button)
