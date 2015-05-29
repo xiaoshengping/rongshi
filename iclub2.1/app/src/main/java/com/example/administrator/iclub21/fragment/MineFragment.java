@@ -40,7 +40,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     public MineFragment() {
         // Required empty public constructor
     }
-    
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
