@@ -11,8 +11,8 @@
          android:layout_width="20dp"
          android:layout_height="25dp" />
      <TextView
+         android:id="@+id/register_title_tv"
          android:layout_marginTop="10dp"
-         android:text="注册"
          android:textSize="@dimen/textSize18"
          android:textColor="@color/white"
          android:layout_centerHorizontal="true"

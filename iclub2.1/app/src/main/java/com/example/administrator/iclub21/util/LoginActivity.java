@@ -4,22 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.example.administrator.iclub21.R;
-import com.example.administrator.iclub21.adapter.ArtistListAdapter;
-import com.example.administrator.iclub21.bean.ArtistHeadBean;
 import com.example.administrator.iclub21.bean.LoginValueBean;
 import com.example.administrator.iclub21.bean.ParmeBean;
-import com.example.administrator.iclub21.bean.artist.ArtistListBean;
-import com.example.administrator.iclub21.bean.artist.ArtistParme;
 import com.example.administrator.iclub21.url.AppUtilsUrl;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -42,10 +38,10 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     private TextView returnTV;
     @ViewInject(R.id.register_tv)
     private TextView RegisterTv;
-
+   @ViewInject(R.id.forget_psw_tv)
+    private TextView forgetTv;
     private HttpUtils httpUtils;
-   // private  String uid;
-    //private  String psw;
+
 
 
     @Override
@@ -59,12 +55,14 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     private void init() {
        intiView();
 
+
     }
     private void intiView() {
         // loginButton.setOnClickListener(this);
         returnTV.setOnClickListener(this);
         loginButton.setOnClickListener(this);
         RegisterTv.setOnClickListener(this);
+        forgetTv.setOnClickListener(this);
         httpUtils=new HttpUtils();
     }
 
@@ -75,6 +73,8 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             case R.id.login_reten_tv:
                 Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
                 intent.putExtra("state","");
+                intent.putExtra("imageUrl","");
+                intent.putExtra("userName","");
                 //设置返回数据
                 LoginActivity.this.setResult(RESULT_OK, intent);
                 LoginActivity.this.finish();
@@ -82,7 +82,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
             case R.id.login_button:
                  String uid=  phoneEdit.getText().toString();
                  String  psw=MD5Uutils.MD5(pswEdit.getText().toString());
-                if(uid!=null&&psw!=null){
+                if(uid!="0"&&psw!="0"){
                 try {
                     intiLoginData(uid,psw);
                 } catch (NoSuchAlgorithmException e) {
@@ -92,7 +92,14 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                 break;
             case R.id.register_tv:
                Intent registerIntent=new Intent(LoginActivity.this,RegisterActivity.class);
+                registerIntent.putExtra("falge","2");
                 startActivityForResult(registerIntent,1);
+
+                break;
+            case R.id.forget_psw_tv:
+                Intent forgetIntent=new Intent(LoginActivity.this,RegisterActivity.class);
+                forgetIntent.putExtra("falge","3");
+                startActivityForResult(forgetIntent,1);
 
                 break;
         }
@@ -113,7 +120,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
     //登录数据
     private void intiLoginData(final String uid,String psw) throws NoSuchAlgorithmException {
 
-        if (uid.length()!=11){
+        if (uid.length()!=11&&uid!="0"&&psw!="0"){
             Toast.makeText(LoginActivity.this,"您输入的电话号码不正确",Toast.LENGTH_LONG).show();
 
         }else {
@@ -132,6 +139,8 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_LONG).show();
                             Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
                             intent.putExtra("state",loginValueBean.getState());
+                            intent.putExtra("imageUrl",loginValueBean.getUserIcon());
+                            intent.putExtra("userName",loginValueBean.getUserName());
                             //设置返回数据
                             LoginActivity.this.setResult(RESULT_OK, intent);
                             finish();
@@ -160,5 +169,17 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
 
     }
 
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+            intent.putExtra("state", "");
+            intent.putExtra("imageUrl", "");
+            intent.putExtra("userName", "");
+            //设置返回数据
+            LoginActivity.this.setResult(RESULT_OK, intent);
+            LoginActivity.this.finish();
+        }
+        return false;
+    }
 }

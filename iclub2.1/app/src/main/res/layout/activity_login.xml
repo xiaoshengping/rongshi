@@ -10,9 +10,9 @@
 
 
     <ImageView
-
+        android:layout_marginTop="20dp"
         style="@style/paren_layout_width"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="170dp"
         android:src="@mipmap/logo" />
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
-        android:drawableLeft="@mipmap/login_phone_icon"
+        android:drawableLeft="@mipmap/login_code_icon"
         android:drawablePadding="5dp"
         android:hint="密码"
         android:password="true"
@@ -44,9 +44,10 @@
     <Button
         android:id="@+id/login_button"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
+
         android:text="登录" />
 
     <LinearLayout
@@ -56,17 +57,20 @@
         <TextView
             android:id="@+id/register_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginLeft="60dp"
             android:layout_weight="1"
+            android:padding="2dp"
             android:text="注册"
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/forget_psw_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginLeft="60dp"
             android:layout_weight="1"
+            android:padding="2dp"
             android:text="忘记密码？"
             android:textColor="@color/white" />
 

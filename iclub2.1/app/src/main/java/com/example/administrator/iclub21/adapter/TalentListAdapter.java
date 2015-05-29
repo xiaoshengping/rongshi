@@ -6,10 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.administrator.iclub21.R;
 import com.example.administrator.iclub21.bean.talent.TalentValueBean;
+import com.example.administrator.iclub21.http.MyAppliction;
 import com.example.administrator.iclub21.url.AppUtilsUrl;
-import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -39,8 +40,9 @@ public class TalentListAdapter extends AppBaseAdapter<TalentValueBean> {
     }
 
     private void init(int position) {
-        BitmapUtils bitmapUtils=new BitmapUtils(context);
-        bitmapUtils.display(viewHodle.imageIcon, AppUtilsUrl.ImageBaseUrl+data.get(position).getUsericon());
+        MyAppliction.imageLoader.displayImage(AppUtilsUrl.ImageBaseUrl+data.get(position).getUsericon(),viewHodle.imageIcon,MyAppliction.RoundedOptions);
+      //  BitmapUtils bitmapUtils=new BitmapUtils(context);
+       // bitmapUtils.display(viewHodle.imageIcon, AppUtilsUrl.ImageBaseUrl+data.get(position).getUsericon());
            viewHodle.talentName.setText(data.get(position).getResumeZhName());
         viewHodle.talentAge.setText(data.get(position).getResumeAge()+"岁");
                if (data.get(position).getResumeSex()==0){

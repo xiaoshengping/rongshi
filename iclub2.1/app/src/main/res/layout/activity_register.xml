@@ -9,7 +9,7 @@
     <ImageView
         style="@style/paren_layout_width"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="150dp"
         android:src="@mipmap/logo" />
     <EditText
         android:id="@+id/register_phone"

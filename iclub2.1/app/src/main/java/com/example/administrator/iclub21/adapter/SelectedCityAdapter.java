@@ -50,10 +50,10 @@ public class SelectedCityAdapter extends BaseAdapter{
             viewHodle.province_tv = (TextView) convertView.findViewById(R.id.province_tv);
 //            holder.text = (TextView) convertView.findViewById(R.id.ItemText);
 //            holder.bt = (Button) convertView.findViewById(R.id.ItemButton);
-            convertView.setTag(viewHodle);//绑定ViewHolder对象
+            convertView.setTag(viewHodle);
         }
         else{
-            viewHodle = (ViewHodle)convertView.getTag();//取出ViewHolder对象
+            viewHodle = (ViewHodle)convertView.getTag();
         }
         String s = areaBean.getArea(mContext,position);
         viewHodle.province_tv.setText(s);

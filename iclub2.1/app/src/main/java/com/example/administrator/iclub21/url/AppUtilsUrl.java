@@ -37,12 +37,18 @@ public class AppUtilsUrl  {
         return BaseUrl+"sendVcode.action?"+"phone="+phone;
 
     }
+    public static String getForgetData(String uid,String pwd,String vcode){
+        //Reset_V2.action? uid=13800138000&pwd=abc123&vcode=888888
+        return BaseUrl+"Reset_V2.action?"+"uid="+uid+"&pwd="+pwd+"&vcode="+vcode;
+
+    }
+
 
     public static String getRecruitmentImage(){
         return ImageBaseUrl+"getJobTopPicture.action";
     }
 
-    public static String getRecruitmentList(/*int jobCategory ,int offset , int limit*/){//jobCategory(ÕÐÆ¸·ÖÀà),offset(´Ó¶àÉÙÌõ¿ªÊ¼) ,limit(Ò»¹²È¡¶àÉÙÌõ)
+    public static String getRecruitmentList(/*int jobCategory ,int offset , int limit*/){//jobCategory(ï¿½ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½),offset(ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼) ,limit(Ò»ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 //        return BaseUrl+"getJobList_V2_1.action?jobCategory="+jobCategory+"&offset="+offset+"&limit="+limit;
         return BaseUrl+"getJobList_V2_1.action?jobCategory=0&offset=0&limit=5";
     }
