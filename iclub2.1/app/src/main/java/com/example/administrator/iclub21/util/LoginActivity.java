@@ -1,6 +1,9 @@
 package com.example.administrator.iclub21.util;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -41,6 +44,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
    @ViewInject(R.id.forget_psw_tv)
     private TextView forgetTv;
     private HttpUtils httpUtils;
+    private SQLhelper sqLhelper;
 
 
 
@@ -54,7 +58,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
      //程序入口
     private void init() {
        intiView();
-
+        sqLhelper=new SQLhelper(this);
 
     }
     private void intiView() {
@@ -137,6 +141,20 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
                        // Log.e("makeText",loginValueBean.getState());
                         if ("success".equals(artistParme.getState())&&uid.equals(loginValueBean.getUid())){
                             Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_LONG).show();
+                            SQLhelper sqLhelper=new SQLhelper(LoginActivity.this);
+                            SQLiteDatabase db= sqLhelper.getWritableDatabase();
+                            Cursor cursor=db.query("user", null, null, null, null, null, null);
+                            while (cursor.moveToNext()) {
+                                String states = cursor.getString(0);
+                                if (states!=null){
+                                    db.delete("user", null, null);
+                                }else {
+                                    insertData(sqLhelper,loginValueBean.getUid(),loginValueBean.getUserName(),loginValueBean.getUserIcon(),loginValueBean.getState(),loginValueBean.getMobile());
+
+                                }
+                            }
+                            cursor.close();
+
                             Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
                             intent.putExtra("state",loginValueBean.getState());
                             intent.putExtra("imageUrl",loginValueBean.getUserIcon());
@@ -167,6 +185,20 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
 
 
 
+    }
+    public void insertData(SQLhelper sqLhelper,String uid,String userName,String userIcon,String state,String mobile ){
+        SQLiteDatabase db=sqLhelper.getWritableDatabase();
+
+       // db.execSQL("insert into user(uid,userName,userIcon,state) values('战士',3,5,7)");
+
+        ContentValues values=new ContentValues();
+        values.put(SQLhelper.UID,uid);
+        values.put(SQLhelper.USERNAME, userName);
+        values.put(SQLhelper.USERICON, userIcon);
+        values.put(SQLhelper.STSTE, state);
+        values.put(SQLhelper.MOBILE, mobile);
+        db.insert(SQLhelper.tableName, SQLhelper.UID, values);
+        db.close();
     }
 
     @Override
