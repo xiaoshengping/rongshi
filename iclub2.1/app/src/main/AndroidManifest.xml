@@ -33,6 +33,14 @@
             android:name=".util.RoleActivity"
             android:label="@string/title_activity_role" >
         </activity>
+        <activity
+            android:name=".util.RoleTalentsActivity"
+            android:label="@string/title_activity_role_talents" >
+        </activity>
+        <activity
+            android:name=".util.ResumeActivity"
+            android:label="@string/title_activity_resume" >
+        </activity>
     </application>
 
 </manifest>

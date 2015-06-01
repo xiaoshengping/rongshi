@@ -1,5 +1,6 @@
 package com.example.administrator.iclub21.util;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -12,6 +13,8 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class RoleActivity extends ActionBarActivity implements View.OnClickListener {
      @ViewInject(R.id.role_reten_tv)
     private TextView roleReturn;
+    @ViewInject(R.id.role_talents_tv)
+    private TextView roleTalents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,7 @@ public class RoleActivity extends ActionBarActivity implements View.OnClickListe
 
     private void inti() {
         roleReturn.setOnClickListener(this);
+        roleTalents.setOnClickListener(this);
 
     }
 
@@ -32,7 +36,11 @@ public class RoleActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.role_reten_tv:
                 finish();
                 break;
+            case R.id.role_talents_tv:
+                Intent intent=new Intent(RoleActivity.this,RoleTalentsActivity.class);
+                startActivity(intent);
 
+                break;
 
         }
 

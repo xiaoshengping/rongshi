@@ -20,6 +20,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/role_talents_tv"
         android:text="人才用户"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="60dp"
