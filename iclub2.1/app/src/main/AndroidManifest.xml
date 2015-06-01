@@ -34,7 +34,7 @@
             android:label="@string/title_activity_role" >
         </activity>
         <activity
-            android:name=".util.RoleTalentsActivity"
+            android:name=".util.roleTalentsActivity"
             android:label="@string/title_activity_role_talents" >
         </activity>
         <activity

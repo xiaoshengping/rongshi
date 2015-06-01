@@ -12,7 +12,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleTalentsActivity extends ActionBarActivity {
+public class roleTalentsActivity extends ActionBarActivity {
     @ViewInject(R.id.talents_pager)
      private ViewPager talentsPager;
     List<Integer> data=new ArrayList<Integer>();

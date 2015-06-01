@@ -37,7 +37,7 @@ public class RoleActivity extends ActionBarActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.role_talents_tv:
-                Intent intent=new Intent(RoleActivity.this,RoleTalentsActivity.class);
+                Intent intent=new Intent(RoleActivity.this,roleTalentsActivity.class);
                 startActivity(intent);
 
                 break;
