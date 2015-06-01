@@ -3,6 +3,7 @@ package com.example.administrator.iclub21.util;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.administrator.iclub21.R;
@@ -13,6 +14,9 @@ public class ResumeActivity extends ActionBarActivity implements View.OnClickLis
 
     @ViewInject(R.id.add_resume_tv)
     private TextView addResumeTv;
+    @ViewInject(R.id.compile_zliao_tv)
+    private ScrollView compileScroView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class ResumeActivity extends ActionBarActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.add_resume_tv:
                 addResumeTv.setVisibility(View.GONE);
+                compileScroView.setVisibility(View.VISIBLE);
                 break;
 
         }

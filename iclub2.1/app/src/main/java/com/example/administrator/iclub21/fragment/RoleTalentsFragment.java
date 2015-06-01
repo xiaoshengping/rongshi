@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.administrator.iclub21.R;
@@ -26,6 +27,7 @@ public class RoleTalentsFragment extends Fragment implements View.OnClickListene
     private TextView cloessTalents;
     @ViewInject(R.id.cwei_talents_tv)
     private TextView cweiTalents;
+
 
     public RoleTalentsFragment() {
         // Required empty public constructor
@@ -52,12 +54,14 @@ public class RoleTalentsFragment extends Fragment implements View.OnClickListene
         cloessTalents.setOnClickListener(this);
         cweiTalents.setOnClickListener(this);
 
+
         Bundle bundle=getArguments();
         int imageUrl= bundle.getInt("iamgeUrl");
         talentsImage.setBackgroundResource(imageUrl);
         if (imageUrl==R.mipmap.talents_icon_d){
             cloessTalents.setVisibility(View.VISIBLE);
             cweiTalents.setVisibility(View.VISIBLE);
+
 
         }
 
