@@ -48,9 +48,10 @@ public class AppUtilsUrl  {
         return ImageBaseUrl+"getJobTopPicture.action";
     }
 
-    public static String getRecruitmentList(/*int jobCategory ,int offset , int limit*/){//jobCategory(��Ƹ����),offset(�Ӷ�������ʼ) ,limit(һ��ȡ������)
+    public static String getRecruitmentList(int city/*int jobCategory ,int offset , int limit*/){//jobCategory(招聘分类),offset(从多少条开始) ,limit(一共取多少条)
 //        return BaseUrl+"getJobList_V2_1.action?jobCategory="+jobCategory+"&offset="+offset+"&limit="+limit;
-        return BaseUrl+"getJobList_V2_1.action?jobCategory=0&offset=0&limit=5";
+        return BaseUrl+"getJobList_V2_1.action?cityid="+city+"&jobCategory=0&offset=0&limit=6";
     }
+
 
 }

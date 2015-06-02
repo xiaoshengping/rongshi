@@ -1,15 +1,16 @@
 package com.example.administrator.iclub21.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
@@ -18,8 +19,8 @@ import com.example.administrator.iclub21.adapter.RecruitmentListAdapter;
 import com.example.administrator.iclub21.bean.artist.ArtistParme;
 import com.example.administrator.iclub21.bean.recruitment.RecruitmentImageBean;
 import com.example.administrator.iclub21.bean.recruitment.RecruitmentListBean;
+import com.example.administrator.iclub21.bean.recruitment.SlideShowView;
 import com.example.administrator.iclub21.url.AppUtilsUrl;
-import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -44,6 +45,8 @@ public class RecruitmentFragment extends Fragment {
     private ListView recruitmentList;
     @ViewInject(R.id.recruiment_list_title)
     private LinearLayout recruiment_list_title;
+
+    private RecruitmentListAdapter recruitmentAdapter;
 
 //   private LinearLayout recruitment_title_ll;
 
@@ -85,24 +88,39 @@ public class RecruitmentFragment extends Fragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
 
-                LinearLayout recruiment_list_title_ad = (LinearLayout)view.findViewById(R.id.recruiment_list_title);
 //
                 if (firstVisibleItem >=1 ) {
-//
+                    recruitmentAdapter.floatingCollar=true;
 //                    recruiment_list_title_ad.setVisibility(View.GONE);
 //                } else if(firstVisibleItem ==1 ) {
                     recruiment_list_title.setVisibility(View.VISIBLE);
-                    recruiment_list_title_ad.setVisibility(View.GONE);
+//                    if(recruiment_list_title_ad ==null){
+                    recruiment_list_title_ad = (LinearLayout) view.findViewById(R.id.recruiment_list_title);
+                    recruiment_list_title_ad.setVisibility(View.INVISIBLE);
+
+
+//                    recruiment_list_title_ad.setVisibility(View.GONE);
 //                }else if(firstVisibleItem ==1){
 //                    recruiment_list_title.setVisibility(View.INVISIBLE);
 //                    recruiment_list_title_ad.setVisibility(View.VISIBLE);
                }else {
                     recruiment_list_title.setVisibility(View.GONE);
+                    if(recruiment_list_title_ad!=null){
+                        recruitmentAdapter.floatingCollar=false;
+                        recruiment_list_title_ad.setVisibility(View.VISIBLE);
+
+                    }
+
                 }
+
+//                recruitmentAdapter.notifyDataSetChanged();
+
             }
         });
 
     }
+
+    private LinearLayout recruiment_list_title_ad=null;
 
 
     //获取广告图片
@@ -119,14 +137,22 @@ public class RecruitmentFragment extends Fragment {
                         List<RecruitmentImageBean> recruitmentImageData = recruitmentImageBean.getValue();
 
                         View header = View.inflate(getActivity(), R.layout.recruitment_list_header, null);//头部内容
-                        ImageView recruitment_list_header = (ImageView)header.findViewById(R.id.recruitment_list_header);
+                        SlideShowView ssv = new SlideShowView(getActivity(),recruitmentImageData);
+
+                        LinearLayout header_ll = (LinearLayout) header.findViewById(R.id.header_ll);
+                        header_ll.addView(ssv);
+
+                        LinearLayout.LayoutParams layoutParams= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (int)(getResources().getDimension(R.dimen.ssv_height)));
+                        layoutParams.setMargins(0, 0, 0, 0);
+                        ssv.setLayoutParams(layoutParams);
+//                        ImageView recruitment_list_header = (ImageView)header.findViewById(R.id.recruitment_list_header);
 //                        tv1.setText(talentData.get(0).getPath());
 
-                        BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
+//                        BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
 
-                        bitmapUtils.display(recruitment_list_header, "http://www.iclubapps.com/upload/"+recruitmentImageData.get(0).getPath());
+//                        bitmapUtils.display(recruitment_list_header, "http://www.iclubapps.com/upload/"+recruitmentImageData.get(0).getPath());
                         recruitmentList.addHeaderView(header);//添加头部
-                        initRecruitmentListData();
+                        initRecruitmentListData(0);
 
                     }
 
@@ -145,9 +171,9 @@ public class RecruitmentFragment extends Fragment {
     }
 
     //获取招聘列表
-    private void initRecruitmentListData() {
+    public void initRecruitmentListData(int city) {
         HttpUtils httpUtils=new HttpUtils();
-        httpUtils.send(HttpRequest.HttpMethod.GET, AppUtilsUrl.getRecruitmentList(), new RequestCallBack<String>() {
+        httpUtils.send(HttpRequest.HttpMethod.GET, AppUtilsUrl.getRecruitmentList(city), new RequestCallBack<String>() {
             @Override
             public void onSuccess(ResponseInfo<String> responseInfo) {
 
@@ -157,7 +183,7 @@ public class RecruitmentFragment extends Fragment {
                     });
                     if (recruitmentListBean.getState().equals("success")) {
                         List<RecruitmentListBean> recruitmentListData = recruitmentListBean.getValue();
-                        RecruitmentListAdapter recruitmentAdapter = new RecruitmentListAdapter(recruitmentListData, getActivity());
+                        recruitmentAdapter = new RecruitmentListAdapter(recruitmentListData, getActivity());
                         recruitmentList.setAdapter(recruitmentAdapter);
                         recruitmentAdapter.notifyDataSetChanged();
 
@@ -175,6 +201,22 @@ public class RecruitmentFragment extends Fragment {
         });
 
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+//        super.onActivityResult(requestCode,resultCode,data);
+//        switch(requestCode){
+//            case RESULT_OK:
+   /*取得来自SecondActivity页面的数据，并显示到画面*/
+        Bundle bundle = data.getExtras();
+
+         /*获取Bundle中的数据，注意类型和key*/
+        int name = bundle.getInt("Name");
+        Toast.makeText(getActivity(), name + "", Toast.LENGTH_SHORT).show();
+        initRecruitmentListData(name);
+//                boolean ismale = bundle.getBoolean("Ismale");
+//        }
     }
 
 

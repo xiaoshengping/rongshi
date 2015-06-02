@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
  */
 public class RecruitmentListAdapter extends AppBaseAdapter<RecruitmentListBean> {
     private ViewHodle viewHodle;
+    public boolean floatingCollar = false;
     public RecruitmentListAdapter(List<RecruitmentListBean> data, Context context) {
         super(data, context);
     }
@@ -42,8 +43,12 @@ public class RecruitmentListAdapter extends AppBaseAdapter<RecruitmentListBean> 
                 viewHodle = (ViewHodle) convertView.getTag();
             }
         if(position==0) {
-
-            viewHodle.recruiment_list_title.setVisibility(View.VISIBLE);
+//
+                viewHodle.recruiment_list_title.setVisibility(View.VISIBLE);
+//            }else {
+            if(floatingCollar)
+                viewHodle.recruiment_list_title.setVisibility(View.INVISIBLE);
+//            }
             viewHodle.recruitment_list_ll.setVisibility(View.GONE);
 
         }else{
